@@ -2,6 +2,7 @@
 
 This is a project to display data from an iAQ Stick with python on Mac OS.
 
+![python-airmonitor screenshot](https://github.com/uvwxy/python-airmonitor/raw/master/airmonitor.png "python-airmonitor Screenshot")
 
 ## Usage
 To show the airmonitor run the python3 script. To make sure you have the dependencies installed, see below.

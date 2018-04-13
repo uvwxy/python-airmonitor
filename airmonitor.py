@@ -21,7 +21,8 @@ def tx_type2(handle, msg):
     hidapi.hid_write(handle, msg)
 
 def rx(handle, numBytes=0x10):
-    return hidapi.hid_read_timeout(handle, numBytes, 1000)
+    rdr = lambda: hidapi.hid_read_timeout(handle, numBytes, 1000)
+    return bytes().join(iter(rdr, b''))
 
 def getPpm(handle):
     tx_type2(handle, '*TR')
@@ -35,7 +36,7 @@ for dev in hidapi.hid_enumerate(vendor_id=0x03eb, product_id=0x2013):
 
 print('reading info from device')
 tx_type1(handle, '*IDN?')
-info = rx(handle) + rx(handle) + rx(handle) + rx(handle) + rx(handle) + rx(handle) + rx(handle)
+info = rx(handle)
 print('ret:"' + str(info) + '"')
 
 
